@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine's for Mirrorball</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: pink;
+      overflow: hidden;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5em;
+      color: #d60093;
+    }
+    .emoji {
+      font-size: 4em;
+      margin-top: 20px;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    .yes {
+      background-color: green;
+      color: white;
+    }
+    .no {
+      background-color: red;
+      color: white;
+    }
+    .loader {
+      width: 80%;
+      height: 30px;
+      border: 2px solid #333;
+      margin: 50px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      display: none;
+    }
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff69b4, #d60093);
+    }
+    .letter {
+      display: none;
+      margin: 40px auto;
+      width: 80%;
+      font-size: 1.2em;
+      line-height: 1.6;
+      background: #fff0f6;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 2em;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(1); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji">🐶💌</div>
+  <h1>Will you be my Valentine’s?</h1>
+  <div class="buttons">
+    <button class="btn yes" onclick="startLoading()">Yes</button>
+    <button class="btn no">No</button>
+  </div>
+  <div class="loader">
+    <div class="progress" id="progress"></div>
+  </div>
+  <div class="letter" id="letter">
+    <p>My dearest Mirrorball (Athenkosi Kuse),</p>
+    <p>From the very first time we met at Paranottis, I was so impressed by you — even your short height made me laugh 😂. Since that day, you’ve been my comfort zone, my safe place, and the best boyfriend I could ever ask for.</p>
+    <p>You do everything for me, and you love me so deeply. We started dating on the 11th of November, and every day since has been magical. You are my mirrorball, reflecting love and joy in every moment we share.</p>
+    <p>I appreciate you endlessly, and I want you to know that you are my heart, my happiness, and my forever Valentine. 💖</p>
+    <p>With all my love,</p>
+    <p>Uzukhanye</p>
+  </div>
+
+  <script>
+    function startLoading() {
+      document.querySelector('.loader').style.display = 'block';
+      let progress = document.getElementById('progress');
+      let width = 0;
+      let interval = setInterval(() => {
+        width++;
+        progress.style.width = width + '%';
+        if (width >= 100) {
+          clearInterval(interval);
+          document.querySelector('.loader').style.display = 'none';
+          document.getElementById('letter').style.display = 'block';
+        }
+      }, 300); // 300ms * 100 = 30 seconds
+    }
+
+    // Generate floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
