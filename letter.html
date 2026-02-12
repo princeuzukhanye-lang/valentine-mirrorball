@@ -76,6 +76,26 @@
       100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
   </style>
+  .gallery {
+  margin-top: 30px;
+}
+
+.pic {
+  width: 250px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(214,0,147,0.6);
+  transition: transform 0.3s ease, opacity 1s ease;
+  opacity: 0;
+}
+
+.pic.show {
+  opacity: 1;
+}
+
+.pic:hover {
+  transform: scale(1.1);
+}
 </head>
 <body>
   <div class="emoji">🐶💌</div>
@@ -124,7 +144,21 @@
     }
     setInterval(createHeart, 500);
   </script>
+  window.onload = function() {
+    const pics = document.querySelectorAll('.pic');
+    pics.forEach((pic, i) => {
+      setTimeout(() => {
+        pic.classList.add('show');
+      }, i * 1000); // each photo fades in 1 second apart
+    });
+  };
+  </script>
 </body>
+  <div class="gallery">
+  <img src="1770850803249.jpg" alt="Memory 1" class="pic">
+  <img src="IMG-20251231-WA0081.jpg" alt="Memory 2" class="pic">
+  <img src="IMG-20260131-WA0056_edit.jpg" alt="Memory 3" class="pic">
+  </div>
   <audio autoplay loop hidden>
   <source src="joel sunny - luminary [original].mp3" type="audio/mpeg">
   </audio>
